@@ -2,8 +2,7 @@ function findLocation() {
   var userInput = "new york";
   var lat;
   var lon;
-  var test;
-  console.log(test);
+
   var settings = {
     url:
       "https://api.opencagedata.com/geocode/v1/json?q=" +
