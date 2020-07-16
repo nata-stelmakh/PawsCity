@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <title>PawsCity</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Hello!</h1>
-    
-</body>
+    <form>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search City"
+          id="search-city-input"
+        />
+      </div>
+    </form>
+    <button type="button" class="btn btn-info">Park</button>
+    <button type="button" class="btn btn-info">Pet Store</button>
+    <div></div>
+    <script>
+      function findLocation() {
+        var userInput = "new york";
+        var lat;
+        var lon;
+        var settings = {
+          url:
+            "https://api.opencagedata.com/geocode/v1/json?q=" +
+            userInput +
+            "&key=3b446aa27f154ce1ba029aa576b449b1",
+          method: "GET",
+        };
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+          console.log("lat: " + response.results[0].geometry.lat);
+          console.log("lon: " + response.results[0].geometry.lng);
+          lat = response.results[0].geometry.lat;
+          lon = response.results[0].geometry.lng;
+          findPlace();
+        });
+      }
+
+      function findPlace() {
+        var inputPlace = "park"; //pet store, park
+
+        var settings = {
+          async: true,
+          crossDomain: true,
+          url:
+            "https://trueway-places.p.rapidapi.com/FindPlacesNearby?type=" +
+            inputPlace +
+            "&radius=10000&language=en&location=" +
+            lat +
+            "%252C" +
+            lon,
+
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "trueway-places.p.rapidapi.com",
+            "x-rapidapi-key":
+              "33220dbdedmsh5499ccf0fb9b28fp11bb85jsn968ac695016c",
+          },
+        };
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      }
+    </script>
+  </body>
 </html>
