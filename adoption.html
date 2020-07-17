@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PawsCity</title>
+    <title>Adoption</title>
     <!-- bulma link -->
     <link
       rel="stylesheet"
@@ -17,6 +19,7 @@
     ></script>
     <!-- link to style.css -->
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <!-- Welcome Page -->
@@ -56,7 +59,7 @@
     <br />
     <!-- buttons -->
     <div class="navbar-center">
-      <button class="button is-primary is-rounded is-info is-light">
+      <button class="button is link is-primary is-rounded is-info is-info">
         <a href="adoption.html">Adoption Centers 🐾</a>
       </button>
       <button
@@ -68,12 +71,12 @@
       <button class="button is-primary is-rounded is-info is-light">
         <a href="park.html">Dog Parks 🐾</a>
       </button>
-      <button class="button is link is-primary is-rounded is-info is-info">
+      <button class="button is-primary is-rounded is-info is-light">
         <a href="PetStores.html">Pet Stores 🐾</a>
       </button>
     </div>
     <br />
-    <div class="storeContainer" id="storeCards"></div>
+    <div class="adoptionContainer" id="adoptionCards"></div>
     <script src="script.js"></script>
   </body>
 </html>
