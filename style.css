@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* a:visited {
-  color: white;
-} */
-=======
 a:link {
   color: white;
 }
-=======
 .app-text {
   font-family: "Courier New", Courier, monospace;
   font-size: 50px;
@@ -26,8 +19,7 @@ a:link {
 }
 
 .logo {
-  font-size: 70px;
-  margin-top: 0px;
-  padding-top: 150px;
+  margin: 20px auto 50px auto;
+  height: 200px;
+  width: 600px;
 }
->>>>>>> master
