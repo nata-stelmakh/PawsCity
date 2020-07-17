@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 .app-text {
-=======
-======= .app-text {
->>>>>>> Luyu
   font-family: "Courier New", Courier, monospace;
   font-size: 50px;
 }
-<<<<<<< HEAD
-=======
->>>>>>>master #inputbox-container {
+
+#inputbox-container {
   /* margin: 0 auto 0 auto; */
   min-width: 410px;
   width: var(--content-width);
@@ -25,4 +20,3 @@
   margin-top: 0px;
   padding-top: 220px;
 }
->>>>>>> Luyu
