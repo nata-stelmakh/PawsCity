@@ -25,7 +25,7 @@ pf.organization.search({ query: city }).then((resp) => {
       `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
        resp.data.organizations[i].name +
         '</h2><h3 class="park-address-1">' +
-        + JSON.stringify(resp.data.organizations[i].address)+
+        + resp.data.organizations[i].address+
         '</h3><h3 class="park-phone-1">' +
        resp.data.organizations[i].phone +
         '</h3><h3 class="park-link-1">' +
