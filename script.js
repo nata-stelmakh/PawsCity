@@ -155,7 +155,7 @@ function findPetShop() {
     // console.log("=====Pet Shop=====");
     // console.log(response);
     var shopArray = response.results;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
       // =======(Dog park contents)=====================================================
       var newParkCard = $(
         `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">` +
