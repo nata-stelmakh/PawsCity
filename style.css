@@ -21,18 +21,25 @@ a:link {
 }
 
 .input {
-  max-width: 561px !important;
+  max-width: 650px !important;
   width: 100% !important;
   margin: 0px auto 0 auto;
+  border-radius: 25px;
+}
+
+.logosize {
+  margin: 0px auto 0px auto;
+  align-content: center;
+  max-width: 500px;
 }
 
 .logo {
-  margin: 20px auto 20px auto;
-  align-content: center;
+  min-width: 300px;
+  padding-top: 150px;
 }
-
+/* 
 .responsive {
   width: 100%;
   max-width: 600px;
   height: auto;
-}
+} */
