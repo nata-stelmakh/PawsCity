@@ -7,26 +7,41 @@
 
 
 var pf = new petfinder.Client({apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm", secret: "tXoLVsBVrwoO8foqw23nd1AcDfLyI4EJNYVnrxE9"});
-
-pf.organization.search({location: "Minneapolis, MN"})
+var city = "Minneapolis"
+pf.organization.search({query: city})
   .then(resp => {
       console.log(resp)
     // Do something with resp.data.organizations
-    var listLength= resp.data.organizations.length
+    var listLength = resp.data.organizations.length
     console.log(listLength)
     for (var i = 1; i < listLength; i++) {
-      var newDiv = $("<div>")
-      
+
+      var newCard =$("<div class='card'>")
+      var newContent=$("<div class='media-content'>")
+      $(newContent).append(newCard)
       var name = resp.data.organizations[i].name
+  
       var email=resp.data.organizations[i].email
-      var  address=resp.data.organizations[i].address
+      var  address=JSON.stringify(resp.data.organizations[i].address)
       var phoneNumber=resp.data.organizations[i].phone
       console.log(name)
       console.log(email)
-      $("<div>").append(name)
-      $("<div>").append(email)
-      $("<div>").append(address)
-      $("<div>").append(phoneNumber)
+      console.log(phoneNumber)
+      console.log(address)
+      var orgName =$("<h2 class='title is-4 adoption-1'>")
+      $(orgName).text(name)
+      var orgAddress =$("<h3 class='adoption-address-1'>")
+      $(orgAddress).text(address)
+      var orgPhone=$("<h3 'adoption-phone-1'>")
+      $(orgPhone).text(phoneNumber)
+      var orgEmail =$("<h3 'adoption-link-1'>")
+      $(orgEmail).text(email)
+
+
+      $(newCard).append(orgName)
+      $(newCard).append(orgEmail)
+      $(newCard).append(orgAddress)
+      $(newCard).append(orgPhone)
     }
   });
 
