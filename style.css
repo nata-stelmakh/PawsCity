@@ -1,3 +1,6 @@
+a:link {
+  color: white;
+}
 /* a:visited {
   color: white;
 } */
@@ -24,12 +27,12 @@ a:link {
 }
 
 .logo {
-  font-size: 70px;
-  margin-top: 0px;
-  padding-top: 150px;
+  margin: 20px auto 20px auto;
+  align-content: center;
 }
 
-.logosize {
-  max-width: 500px;
-  margin: 0 auto 0 auto;
+.responsive {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
 }

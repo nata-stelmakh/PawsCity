@@ -2,8 +2,7 @@
 
 https://nata-stelmakh.github.io/PawsCity/
 
-an app desined for people looking to adopt and new pet owners
-given the users input -location, offers a choice of nearby pet shelters, pet stores and parks
+An app desined for people looking to adopt and new pet owners, given the user's input location, offers a choice of nearby pet shelters, dog-friendly places, pet stores and parks.
 
 # USER STORY
 
@@ -13,7 +12,7 @@ So that I have an easily accessible comprehensive resource.
 
 # OVERVIEW
 
-We are creating an app to connect the petless with the petful. We provide info from Petfind.com that may yield local results or traveling results to find your new companion. In addition, we provide pet related community parks, stores, places for your pet via Trueway API.
+We are creating an app to connect the petless with the petful. We provide info from petfinder.com to yield location-based results to find your new companion. In addition, we provide pet related community parks, stores, places for your pet via Trueway API.
 
 # USER PROFILE
 
