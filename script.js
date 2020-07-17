@@ -73,7 +73,7 @@ function findPark() {
     console.log(response);
     var parkArray = response.results;
     for (let i = 0; i < parkArray.length; i++) {
-      // ============================================================
+      // =======(Dog park contents)=====================================================
       var newParkCard = $(
         `<div class="card"> <div class="card-content"><div class="media" id="dogMedia"><div class="media-left" id="newParkFigure"><figure class="image is-96x96" id="dogImg"><img id=dog${i}></figure></div><div class="media-content" id="newParkContent"><h2 class="title is-4 park-1">` +
           parkArray[i].name +
@@ -85,36 +85,6 @@ function findPark() {
           parkArray[i].website +
           "</h3></div></div>"
       );
-
-      // ============================================================
-      // var newParkCard = $(
-      //   '<div class="card"><div class="card-content"><div class="media">'
-      // );
-      // var newParkFigure = $(
-      //   `<div class="media-left"><figure class="image is-96x96"><img id=dog${i}>`
-      // );
-
-      // ============================================================
-      // var newParkContent = $('<div class="media-content" id="newParkContent">');
-
-      // var name = $(
-      //   '<h2 class="title is-4 park-1">' + parkArray[i].name + "</h2>"
-      // );
-      // var adress = $(
-      //   '<h3 class="park-address-1">Adress: ' + parkArray[i].address + "</h3>"
-      // );
-      // var phone = $(
-      //   '<h3 class="park-phone-1">Phone: ' + parkArray[i].phone_number + "</h3>"
-      // );
-
-      // var website = $(
-      //   '<h3 class="park-link-1">Website: ' +
-      //     parkArray[i].website +
-      //     "</h3><br />"
-      // );
-      // newParkContent.append(name, adress, phone, website);
-
-      // $("#dogMedia").append(newParkFigure, newParkContent);
 
       $("#parkContainer").append(newParkCard);
 
