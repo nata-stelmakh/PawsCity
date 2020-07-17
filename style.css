@@ -1,6 +1,14 @@
 a:link {
   color: white;
 }
+/* a:visited {
+  color: white;
+} */
+
+a:link {
+  color: white;
+}
+
 .app-text {
   font-family: "Courier New", Courier, monospace;
   font-size: 50px;
@@ -22,4 +30,9 @@ a:link {
   margin: 20px auto 50px auto;
   height: 200px;
   width: 600px;
+}
+
+.logosize {
+  max-width: 500px;
+  margin: 0 auto 0 auto;
 }
