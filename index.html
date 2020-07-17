@@ -5,7 +5,7 @@
     <script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paws_City</title>
+    <title>Paws City</title>
     <!-- bulma link -->
     <link
       rel="stylesheet"
@@ -17,15 +17,21 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
-    <!-- link to style.css -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Welcome Page -->
     <!-- NavBar -->
-    <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand navbar-start">
-        <a href="index.html" class="app-text navbar-item">Paws City</a>
+        <a class="navbar-item" href="https://bulma.io">
+          <img
+            src="https://bulma.io/images/bulma-logo.png"
+            width="112"
+            height="28"
+          />
+        </a>
+
         <a
           role="button"
           class="navbar-burger burger"
@@ -37,22 +43,6 @@
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
-      </div>
-      <div class="navbar-end">
-        <input
-          id="city-search"
-          class="input"
-          type="text"
-          placeholder="Search City..."
-          style="margin-top: 6px;"
-        />
-        <span class="icon is-left">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </span>
-      </div>
-    </nav>
-    <br />
-        <!-- buttons -->
         <div class="navbar-center">
           <button class="button is-primary is-rounded is-info is-light">
             <a href="adoption.html">Adoption Centers 🐾</a>
@@ -63,45 +53,82 @@
           >
             <a href="dog-friendly.html">Pet-Friendly Places 🐾</a>
           </button>
-          <button class="button is-primary is-rounded is-info is-light">
+          <button class="button is link is-primary is-rounded is-info is-info">
             <a href="park.html">Dog Parks 🐾</a>
           </button>
           <button class="button is-primary is-rounded is-info is-light">
             <a href="PetStores.html">Pet Stores 🐾</a>
           </button>
         </div>
-        <br />
+      </div>
+    </nav>
 
-    <!-- image with link -->
+    <div class="logo">
+      <p class="level-item">PAWS CITY</p>
+    </div>
+    <div id="inputbox-container">
+      <!-- <div class="navbar-center"> -->
+      <input
+        class="input level-item"
+        type="text"
+        placeholder="Search"
+        style="margin: 0 atuo;"
+      />
+      <!-- <span class="icon is-left">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </span> -->
+      <!-- </div> -->
+    </div>
+
+    <br />
+    <br />
     <div class="tile is-ancestor">
-      <div class="tile is-vertical is-6 ">
-        <!-- Adopt a Pet  -->
-        <div class="tile">
-            <a href="adoption.html">
-                <img src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9" alt="">
-            </a>
-        </div>
-        <!-- Pet Park -->
-        <div class="tile">
-            <a href="park.html">
-                <img src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9" alt="">
-            </a>
-        </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <a href="adoption.html" class="level-item">Adoption Centers 🐾</a>
+          <a href="adoption.html">
+            <img
+              src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9"
+              alt=""
+            />
+          </a>
+        </article>
       </div>
-      <div class="tile is-vertical is-6 ">
-        <!-- dog-friendly -->
-        <div class="tile">
-            <a href="dog-friendly.html">
-                <img src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9" alt="">
-            </a>
-        </div>
-        <!-- Pet Stores -->
-        <div class="tile">
-            <a href="PetStores.html">
-                <img src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9" alt="">
-            </a>
-        </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <a href="park.html" class="level-item">Pet Parks 🐾</a>
+
+          <a href="park.html">
+            <img
+              src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9"
+              alt=""
+            />
+          </a>
+        </article>
       </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <a href="dog-friendly.html" class="level-item"
+            >Pet-Friendly Places 🐾</a
+          >
+          <a href="dog-friendly.html">
+            <img
+              src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9"
+              alt=""
+            />
+          </a>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <a href="PetStores.html" class="level-item">Pet Stores 🐾</a>
+          <a href="PetStores.html">
+            <img
+              src="https://cdn.abcotvs.com/dip/images/486320_012215-ap-dog-park-img.jpg?w=1280&r=16%3A9"
+              alt=""
+            />
+          </a>
+        </article>
       </div>
     </div>
 
@@ -110,4 +137,3 @@
     <script src="./script.js"></script>
   </body>
 </html>
-
