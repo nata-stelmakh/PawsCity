@@ -64,17 +64,38 @@ pf.organization.search({ query: city }).then((resp) => {
     
     }
   
-  })
-}
+//       var email=resp.data.organizations[i].email
+//       var  address=JSON.stringify(resp.data.organizations[i].address)
+//       var phoneNumber=resp.data.organizations[i].phone
+//       console.log(name)
+//       console.log(email)
+//       console.log(phoneNumber)
+//       console.log(address)
+//       var orgName =$("<h2 class='title is-4 adoption-1'>")
+//       $(orgName).text(name)
+//       var orgAddress =$("<h3 class='adoption-address-1'>")
+//       $(orgAddress).text(address)
+//       var orgPhone=$("<h3 'adoption-phone-1'>")
+//       $(orgPhone).text(phoneNumber)
+//       var orgEmail =$("<h3 'adoption-link-1'>")
+//       $(orgEmail).text(email)
 
-findOrganization();
 
+//       $(newCard).append(orgName)
+//       $(newCard).append(orgEmail)
+//       $(newCard).append(orgAddress)
+//       $(newCard).append(orgPhone)
+//     }
+//   });
+
+var userInput = "new york";
+var lat;
+var lon;
 findLocationPark();
 findLocationShop();
-// $("input").submit(function () {
-//   userInput = input.val();
-//   console.log(userInput);
-// });
+findOrganization();
+
+
 function findLocationPark() {
   var settings = {
     url:
@@ -161,12 +182,14 @@ function findPark() {
   });
 }
 function findPetShop() {
+
+  
   var inputPlace = "pet_store"; //pet store, park
+
   var settings = {
     async: true,
     crossDomain: true,
-    url:
-      "https://trueway-places.p.rapidapi.com/FindPlacesNearby?type=" +
+    url:"https://trueway-places.p.rapidapi.com/FindPlacesNearby?type=" +
       inputPlace +
       "&radius=10000&language=en&location=" +
       lat +
@@ -178,14 +201,41 @@ function findPetShop() {
       "x-rapidapi-key": "cfef53d7cdmsh72ff2dcd84c03fap109e6djsn9398e97c0e46",
     },
   };
-  $.ajax(settings).done(function (response) {
+  
+$.ajax(settings).done(function (response) {
     // console.log("=====Pet Shop=====");
+
     // console.log(response);
     var shopArray = response.results;
     for (let i = 0; i < 20; i++) {
       // =======(Dog park contents)=====================================================
       var newParkCard = $(
-        `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">` +
+
+        `<div class=“card”> <div class=“card-content”><div class=“media”><div class=“media-left”><figure class=“image is-96x96”><img id=dog${i}></figure></div><div class=“media-content”><h2 class=“title is-4 store-1”>` +
+          shopArray[i].name +
+          "</h2><h3 class='store-address-1'>" +
+          shopArray[i].address +
+          "</h3><h3 class='store-phone-1'>" +
+          shopArray[i].phone_number +
+          "</h3><h3 class='store-link-1'>" +
+          shopArray[i].website +
+          "</h3></div></div><br />"
+      );
+      $('#storeContainer').append(newParkCard);
+      // =====(dog img)=======================================================
+      var queryURL =
+        "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+      }).then(function (response) {
+        // console.log(“=====dog imgs=====“);
+        // console.log(response);
+        var imageUrl = response.data.fixed_width_small_url;
+        $(`#dog` + i).attr('src', imageUrl);
+        $('img').attr('alt', 'dog image');
+
+        $('<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">` +
           shopArray[i].name +
           '</h2><h3 class="store-address-1">' +
           shopArray[i].address +
@@ -195,6 +245,7 @@ function findPetShop() {
           shopArray[i].website +
           "</h3></div></div><br />"
       );
+
       $("#storeContainer").append(newParkCard);
       // =====(dog img)=======================================================
       var queryURL =
@@ -208,9 +259,16 @@ function findPetShop() {
         var imageUrl = response.data.fixed_width_small_url;
         $(`#dog` + i).attr("src", imageUrl);
         $("img").attr("alt", "dog image");
+
         // ============================================================
       });
     }
-  });
-};
+      );
+  }
+})
+}
+
+
+
+
 
