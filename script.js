@@ -3,6 +3,9 @@
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
+var userInput = "new york";//after test should be exchanged for city name
+var lat;
+var lon;
 
 $("input").on("click", function (event) {
   event.preventDefault();
@@ -18,9 +21,7 @@ $("input").on("keypress",function(event){
   }
 
 })
-var userInput = "new york";//after test should be exchanged for city name
-var lat
-var lon
+
 
 function findOrganization (){
 var pf = new petfinder.Client({
@@ -41,59 +42,25 @@ pf.organization.search({ query: city }).then((resp) => {
    var state =resp.data.organizations[i].address.state 
    var postcode =resp.data.organizations[i].address.postcode
    var address = street+city+state+postcode
-  //+resp.data.organizations[i].city+resp.data.organizations[i].state+resp.data.organizations[i].postcode
+  
    console.log(address)
 
-     var newAdoptionOrgCard =
-     $('<div class="card">');
-     
+     var newAdoptionOrgCard =$('<div class="card">');
      var name = $('<h2 class="title is-4 park-1>').text(resp.data.organizations[i].name)
-     $("<h3 class='park-address-1'>") 
-  
-    var phone=  $( '<h3 class="park-phone-1">').text(resp.data.organizations[i].phone) 
-  
-    var email =  $('</h3><h3 class="park-link-1">').text(resp.data.organizations[i].email) 
-       
-        var addressInfo =
-        $("<h3 class='park-address-1'>").text(address)
-
-        console.log(addressInfo)
-
-
-    $("#adoptionCards").append(addressInfo);
+     var phone=  $( '<h3 class="park-phone-1">').text(resp.data.organizations[i].phone) 
+     var email =  $('</h3><h3 class="park-link-1">').text(resp.data.organizations[i].email) 
+     var addressInfo = $("<h3 class='park-address-1'>").text(address)
+     console.log(addressInfo)
+      $(newAdoptionOrgCard).append(name)
+      $(newAdoptionOrgCard).append(phone)
+      $(newAdoptionOrgCard).append(email)
+      $(newAdoptionOrgCard).append(addressInfo)
+    $("#adoptionCards").append(newAdoptionOrgCard);
     
-    }
+  }
+})
+}
   
-//       var email=resp.data.organizations[i].email
-//       var  address=JSON.stringify(resp.data.organizations[i].address)
-//       var phoneNumber=resp.data.organizations[i].phone
-//       console.log(name)
-//       console.log(email)
-//       console.log(phoneNumber)
-//       console.log(address)
-//       var orgName =$("<h2 class='title is-4 adoption-1'>")
-//       $(orgName).text(name)
-//       var orgAddress =$("<h3 class='adoption-address-1'>")
-//       $(orgAddress).text(address)
-//       var orgPhone=$("<h3 'adoption-phone-1'>")
-//       $(orgPhone).text(phoneNumber)
-//       var orgEmail =$("<h3 'adoption-link-1'>")
-//       $(orgEmail).text(email)
-
-
-//       $(newCard).append(orgName)
-//       $(newCard).append(orgEmail)
-//       $(newCard).append(orgAddress)
-//       $(newCard).append(orgPhone)
-//     }
-//   });
-
-var userInput = "new york";
-var lat;
-var lon;
-findLocationPark();
-findLocationShop();
-findOrganization();
 
 
 function findLocationPark() {
@@ -235,7 +202,7 @@ $.ajax(settings).done(function (response) {
         $(`#dog` + i).attr('src', imageUrl);
         $('img').attr('alt', 'dog image');
 
-        $('<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">` +
+        $('<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">' +
           shopArray[i].name +
           '</h2><h3 class="store-address-1">' +
           shopArray[i].address +
@@ -243,7 +210,7 @@ $.ajax(settings).done(function (response) {
           shopArray[i].phone_number +
           '</h3><h3 class="store-link-1">' +
           shopArray[i].website +
-          "</h3></div></div><br />"
+          '</h3></div></div><br />'
       );
 
       $("#storeContainer").append(newParkCard);
@@ -268,7 +235,9 @@ $.ajax(settings).done(function (response) {
 })
 }
 
-
+findLocationPark();
+findLocationShop();
+findOrganization();
 
 
 
