@@ -76,8 +76,28 @@ function findOrganization() {
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
       $(newAdoptionOrgCard).append(addressInfo);
 
-      $("#adoptionCards").append(newAdoptionOrgCard);
-    }
+      
+      //======================ADDING A DOG IMG
+      // var queryURL =
+      //   "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
+      // $.ajax({
+      //   url: queryURL,
+      //   method: "GET",
+      // }).then(function (response) {
+      //   // console.log(“=====dog imgs=====“);
+      //   // console.log(response);
+      //   var imageUrl = response.data.fixed_width_small_url;
+      //   $(`#dog` + i).attr("src", imageUrl);
+      //   $("img").attr("alt", "dog image");
+
+      //  var dogImg= $('<div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div>')
+      //  $(newAdoptionOrgCard).append(dogImg)
+
+       $("#adoptionCards").append(newAdoptionOrgCard);
+
+
+    // })
+  }
   });
 }
 
@@ -98,6 +118,7 @@ function findLocationPark() {
     findPark();
   });
 }
+
 function findLocationShop() {
   var settings = {
     url:
