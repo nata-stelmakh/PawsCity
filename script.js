@@ -2,6 +2,9 @@
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
+var userInput = "new york";//after test should be exchanged for city name
+var lat;
+var lon;
 
 $("input").on("click", function (event) {
   event.preventDefault();
@@ -15,7 +18,15 @@ $("input").on("keypress", function (event) {
     var cityname = $("input").val().trim();
     return cityname;
   }
-});
+
+})
+
+
+// function findOrganization (){
+// var pf = new petfinder.Client({
+//   apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
+//   secret: "tXoLVsBVrwoO8foqw23nd1AcDfLyI4EJNYVnrxE9",
+// });
 var userInput = "new york"; //after test should be exchanged for city name
 var lat;
 var lon;
@@ -25,7 +36,9 @@ function findOrganization() {
     apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
     secret: "tXoLVsBVrwoO8foqw23nd1AcDfLyI4EJNYVnrxE9",
   });
+
   var city = userInput;
+  
   pf.organization.search({ query: city }).then((resp) => {
     console.log(resp);
     // Do something with resp.data.organizations
@@ -48,31 +61,35 @@ function findOrganization() {
       );
       $("<h3 class='park-address-1'>");
 
-      var phone = $('<h3 class="park-phone-1">').text(
-        resp.data.organizations[i].phone
-      );
+  var listLength = resp.data.organizations.length;
+  console.log(listLength);
+  for (var i = 0; i < listLength; i++) {
+   var street = resp.data.organizations[i].address.address1
+   var city =resp.data.organizations[i].address.city
+   var state =resp.data.organizations[i].address.state 
+   var postcode =resp.data.organizations[i].address.postcode
+   var address = street+city+state+postcode
+  
+   console.log(address)
 
-      var email = $('</h3><h3 class="park-link-1">').text(
-        resp.data.organizations[i].email
-      );
-
-      var addressInfo = $("<h3 class='park-address-1'>").text(address);
-
-      console.log(addressInfo);
-
-      $("#adoptionCards").append(addressInfo);
-    }
-  });
+     var newAdoptionOrgCard =$('<div class="card">');
+     var name = $('<h2 class="title is-4 park-1>').text(resp.data.organizations[i].name)
+     var phone=  $( '<h3 class="park-phone-1">').text(resp.data.organizations[i].phone) 
+     var email =  $('</h3><h3 class="park-link-1">').text(resp.data.organizations[i].email) 
+     var addressInfo = $("<h3 class='park-address-1'>").text(address)
+     console.log(addressInfo)
+      $(newAdoptionOrgCard).append(name)
+      $(newAdoptionOrgCard).append(phone)
+      $(newAdoptionOrgCard).append(email)
+      $(newAdoptionOrgCard).append(addressInfo)
+    $("#adoptionCards").append(newAdoptionOrgCard);
+    
+  }
+})
 }
+  
 
-findOrganization();
 
-findLocationPark();
-findLocationShop();
-// $("input").submit(function () {
-//   userInput = input.val();
-//   console.log(userInput);
-// });
 function findLocationPark() {
   var settings = {
     url:
@@ -159,12 +176,14 @@ function findPark() {
   });
 }
 function findPetShop() {
+
+  
   var inputPlace = "pet_store"; //pet store, park
+
   var settings = {
     async: true,
     crossDomain: true,
-    url:
-      "https://trueway-places.p.rapidapi.com/FindPlacesNearby?type=" +
+    url:"https://trueway-places.p.rapidapi.com/FindPlacesNearby?type=" +
       inputPlace +
       "&radius=10000&language=en&location=" +
       lat +
@@ -176,14 +195,40 @@ function findPetShop() {
       "x-rapidapi-key": "cfef53d7cdmsh72ff2dcd84c03fap109e6djsn9398e97c0e46",
     },
   };
-  $.ajax(settings).done(function (response) {
+  
+$.ajax(settings).done(function (response) {
     // console.log("=====Pet Shop=====");
     // console.log(response);
     var shopArray = response.results;
     for (let i = 0; i < 20; i++) {
       // =======(Dog park contents)=====================================================
       var newParkCard = $(
-        `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">` +
+
+        `<div class=“card”> <div class=“card-content”><div class=“media”><div class=“media-left”><figure class=“image is-96x96”><img id=dog${i}></figure></div><div class=“media-content”><h2 class=“title is-4 store-1”>` +
+          shopArray[i].name +
+          "</h2><h3 class='store-address-1'>" +
+          shopArray[i].address +
+          "</h3><h3 class='store-phone-1'>" +
+          shopArray[i].phone_number +
+          "</h3><h3 class='store-link-1'>" +
+          shopArray[i].website +
+          "</h3></div></div><br />"
+      );
+      $('#storeContainer').append(newParkCard);
+      // =====(dog img)=======================================================
+      var queryURL =
+        "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+      }).then(function (response) {
+        // console.log(“=====dog imgs=====“);
+        // console.log(response);
+        var imageUrl = response.data.fixed_width_small_url;
+        $(`#dog` + i).attr('src', imageUrl);
+        $('img').attr('alt', 'dog image');
+
+        $('<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 store-1">' +
           shopArray[i].name +
           '</h2><h3 class="store-address-1">' +
           shopArray[i].address +
@@ -191,8 +236,9 @@ function findPetShop() {
           shopArray[i].phone_number +
           '</h3><h3 class="store-link-1">' +
           shopArray[i].website +
-          "</h3></div></div><br />"
+          '</h3></div></div><br />'
       );
+
       $("#storeContainer").append(newParkCard);
       // =====(dog img)=======================================================
       var queryURL =
@@ -206,8 +252,17 @@ function findPetShop() {
         var imageUrl = response.data.fixed_width_small_url;
         $(`#dog` + i).attr("src", imageUrl);
         $("img").attr("alt", "dog image");
+
         // ============================================================
       });
     }
-  });
+      );
+  }
+})
 }
+
+findLocationPark();
+findLocationShop();
+findOrganization();
+
+
