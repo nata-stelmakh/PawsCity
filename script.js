@@ -44,18 +44,33 @@ pf.organization.search({ query: city }).then((resp) => {
    var address = street+city+state+postcode
   
    console.log(address)
+   
+   var queryURL =
+        "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+      }).then(function (response) {
+        // console.log(“=====dog imgs=====“);
+        // console.log(response);
+        var imageUrl = response.data.fixed_width_small_url;
+        $(`#dog` + i).attr('src', imageUrl);
+        $('img').attr('alt', 'dog image');
+      })
 
      var newAdoptionOrgCard =$('<div class="card">');
      var name = $('<h2 class="title is-4 park-1>').text(resp.data.organizations[i].name)
      var phone=  $( '<h3 class="park-phone-1">').text(resp.data.organizations[i].phone) 
      var email =  $('</h3><h3 class="park-link-1">').text(resp.data.organizations[i].email) 
      var addressInfo = $("<h3 class='park-address-1'>").text(address)
+    
      console.log(addressInfo)
       $(newAdoptionOrgCard).append(name)
       $(newAdoptionOrgCard).append(phone)
       $(newAdoptionOrgCard).append(email)
       $(newAdoptionOrgCard).append(addressInfo)
-    $("#adoptionCards").append(newAdoptionOrgCard);
+      $('<div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div>').appendTo(newAdoptionOrgCard)
+      $("#adoptionCards").append(newAdoptionOrgCard);
     
   }
 })
