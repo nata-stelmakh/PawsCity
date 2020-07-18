@@ -154,9 +154,25 @@ findLocationShop();
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
-var userInput = "new york";
+
+$("input").on("click", function (event) {
+  event.preventDefault();
+
+  var cityname = $("input").val().trim();
+  return cityname
+});
+//=======================ADD KEY "ENTER" AS A TRIGGER
+$("input").on("keypress",function(event){
+  if(event.which===13 || event.keyCode ===13){
+    var cityname = $("input").val().trim();
+    return cityname
+  }
+
+})
+var userInput = "new york";//after test should be exchanged for city name
 var lat
 var lon
+
 function findOrganization (){
 var pf = new petfinder.Client({
   apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
@@ -171,20 +187,31 @@ pf.organization.search({ query: city }).then((resp) => {
   var listLength = resp.data.organizations.length;
   console.log(listLength);
   for (var i = 0; i < listLength; i++) {
-   
-    var newAdoptionOrgCard = $(
-      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
-       resp.data.organizations[i].name +
-        '</h2><h3 class="park-address-1">' +
-        + JSON.stringify(resp.data.organizations[i].address)+
-        '</h3><h3 class="park-phone-1">' +
-       resp.data.organizations[i].phone +
-        '</h3><h3 class="park-link-1">' +
-       resp.data.organizations[i].email +
-        "</h3></div></div><br />"
-    );
+   var street = resp.data.organizations[i].address.address1
+   var city =resp.data.organizations[i].address.city
+   var state =resp.data.organizations[i].address.state 
+   var postcode =resp.data.organizations[i].address.postcode
+   var address = street+city+state+postcode
+  //+resp.data.organizations[i].city+resp.data.organizations[i].state+resp.data.organizations[i].postcode
+   console.log(address)
+
+     var newAdoptionOrgCard =
+     $('<div class="card">');
+     
+     var name = $('<h2 class="title is-4 park-1>').text(resp.data.organizations[i].name)
+     $("<h3 class='park-address-1'>") 
   
-    $("#adoptionCards").append(newAdoptionOrgCard);
+    var phone=  $( '<h3 class="park-phone-1">').text(resp.data.organizations[i].phone) 
+  
+    var email =  $('</h3><h3 class="park-link-1">').text(resp.data.organizations[i].email) 
+       
+        var addressInfo =
+        $("<h3 class='park-address-1'>").text(address)
+
+        console.log(addressInfo)
+
+
+    $("#adoptionCards").append(addressInfo);
     
     }
   
@@ -381,7 +408,7 @@ function findPetShop() {
 >>>>>>> master
     // console.log(response);
     var shopArray = response.results;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
       // =======(Dog park contents)=====================================================
       var newParkCard = $(
 <<<<<<< HEAD
