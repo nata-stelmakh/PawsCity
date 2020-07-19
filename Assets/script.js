@@ -213,7 +213,23 @@ function renderParkList() {
 
     var phone = "";
     if (parkArray[i].phone_number) {
-      phone = parkArray[i].phone_number;
+      var p = parkArray[i].phone_number;
+      phone =
+        p[0] +
+        p[1] +
+        " (" +
+        p[2] +
+        p[3] +
+        p[4] +
+        ") " +
+        p[5] +
+        p[6] +
+        p[7] +
+        " - " +
+        p[8] +
+        p[9] +
+        p[10] +
+        p[11];
     }
     var website = "";
     if (parkArray[i].website) {
@@ -322,7 +338,23 @@ function renderStoreList() {
 
     var phone = "";
     if (storeArray[i].phone_number) {
-      phone = storeArray[i].phone_number;
+      var p = storeArray[i].phone_number;
+      phone =
+        p[0] +
+        p[1] +
+        " (" +
+        p[2] +
+        p[3] +
+        p[4] +
+        ") " +
+        p[5] +
+        p[6] +
+        p[7] +
+        " - " +
+        p[8] +
+        p[9] +
+        p[10] +
+        p[11];
     }
     var website = "";
     if (storeArray[i].website) {
