@@ -7,19 +7,30 @@ var lat;
 var lon;
 // var address=[]
 
-$("input").on("click", function (event) {
+//get city name from input and do all function (kaori)
+$("form").submit(function (event) {
   event.preventDefault();
+  userInput = $("input").val().trim();
+  console.log(userInput);
 
-  var cityname = $("input").val().trim();
-  return cityname;
+  findLocationPark();
+  findLocationShop();
+  findOrganization();
 });
-//=======================ADD KEY "ENTER" AS A TRIGGER
-$("input").on("keypress", function (event) {
-  if (event.which === 13 || event.keyCode === 13) {
-    var cityname = $("input").val().trim();
-    return cityname;
-  }
-});
+
+// $("input").on("click", function (event) {
+//   event.preventDefault();
+
+//   var cityname = $("input").val().trim();
+//   return cityname;
+// });
+// //=======================ADD KEY "ENTER" AS A TRIGGER
+// $("input").on("keypress", function (event) {
+//   if (event.which === 13 || event.keyCode === 13) {
+//     var cityname = $("input").val().trim();
+//     return cityname;
+//   }
+// });
 
 function findOrganization() {
   var pf = new petfinder.Client({
