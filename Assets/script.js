@@ -4,22 +4,36 @@
 //make an ajax request with petfinder to bring out locations of organizations
 var userInput; //after test should be exchanged for citname
 var parkArray = [];
-var lat;
-var lon;
+var storeArray = [];
+// var lat;
+// var lon;
 // var address=[]
+
+$(function () {
+  //get city name and generate all cards when reloaded
+  userInput = localStorage.getItem("user-input");
+  if (userInput !== null) {
+    findOrganization();
+    findPark();
+    findStore();
+  }
+});
 
 //get city name from input and do all function (KC)
 $("form").submit(function (event) {
+  //empty all elements before generate
   $("#parkCards").empty();
   $("#storeCards").empty();
 
   event.preventDefault();
   userInput = $("input").val().trim();
   console.log(userInput);
+  //store city name into localstorage
+  localStorage.setItem("user-input", userInput);
 
   findOrganization();
   findPark();
-  findStore();
+  // findStore();
 });
 
 // $("input").on("click", function (event) {
@@ -114,15 +128,18 @@ function findOrganization() {
   });
 }
 
-//park
+//park==========================================================
 function findPark() {
+  //get search results array
   var parkStorage = JSON.parse(localStorage.getItem(userInput + "_park"));
   console.log("function findPark()");
+  //if there's a data in local storage, gengerate park list
   if (parkStorage !== null) {
     console.log("if");
     parkArray = parkStorage;
     renderParkList();
   } else {
+    // if there's no data in a local storage, go to API
     console.log("else");
     ajaxPark();
   }
@@ -131,6 +148,7 @@ function findPark() {
 function ajaxPark() {
   console.log("ajaxPark");
   console.log(userInput);
+  //setup API for getting earched geolocation
   var settings = {
     url:
       "https://api.opencagedata.com/geocode/v1/json?q=" +
@@ -139,11 +157,11 @@ function ajaxPark() {
     method: "GET",
   };
   $.ajax(settings).done(function (response) {
-    // console.log(response);
     var lat = response.results[0].geometry.lat;
     var lon = response.results[0].geometry.lng;
     console.log("lat: " + lat);
     console.log("lon: " + lon);
+    //setup API for searhing parks
     var inputPlace = "park"; //pet store, park
     var settings = {
       async: true,
@@ -162,21 +180,26 @@ function ajaxPark() {
       },
     };
     $.ajax(settings).done(function (response) {
-      // console.log("=====Park=====");
-      // console.log(response);
+      //store search results into local storage
       localStorage.setItem(
         userInput + "_park",
         JSON.stringify(response.results)
       );
+      console.log("JSON 完了");
     });
   });
-  var parkStorage = JSON.parse(localStorage.getItem("city_park"));
-  parkArray = parkStorage;
-  renderParkList();
+  //timer for wating API response time
+  setTimeout(function () {
+    var parkStorage = JSON.parse(localStorage.getItem(userInput + "_park"));
+    parkArray = parkStorage;
+    console.log("parkArrayの中味" + parkArray);
+    renderParkList();
+  }, 2000);
 }
 
 function renderParkList() {
   console.log("function renderParkList()");
+  //generate content cards
   for (let i = 0; i < 10; i++) {
     console.log("for loop" + i);
     console.log(parkArray[i]);
@@ -200,15 +223,18 @@ function renderParkList() {
   }
 }
 
-//pet store
+//pet store==========================================================
 function findStore() {
+  //get search results array
   var storeStorage = JSON.parse(localStorage.getItem(userInput + "_store"));
   console.log("function findStore()");
+  //if there's a data in local storage, gengerate park list
   if (storeStorage !== null) {
     console.log("if");
     storeArray = storeStorage;
     renderStoreList();
   } else {
+    // if there's no data in a local storage, go to API
     console.log("else");
     ajaxStore();
   }
@@ -217,6 +243,7 @@ function findStore() {
 function ajaxStore() {
   console.log("ajaxStore");
   console.log(userInput);
+  //setup API for getting earched geolocation
   var settings = {
     url:
       "https://api.opencagedata.com/geocode/v1/json?q=" +
@@ -225,12 +252,12 @@ function ajaxStore() {
     method: "GET",
   };
   $.ajax(settings).done(function (response) {
-    // console.log(response);
     var lat = response.results[0].geometry.lat;
     var lon = response.results[0].geometry.lng;
     console.log("lat: " + lat);
     console.log("lon: " + lon);
-    var inputPlace = "pet_store"; //pet store, park
+    //setup API for searhing parks
+    var inputPlace = "pet_store"; //pet_store, park
     var settings = {
       async: true,
       crossDomain: true,
@@ -256,13 +283,17 @@ function ajaxStore() {
       );
     });
   });
-  var storeStorage = JSON.parse(localStorage.getItem(userInput + "_store"));
-  storeArray = storeStorage;
-  renderStoreList();
+  //timer for wating API response time
+  setTimeout(function () {
+    var storeStorage = JSON.parse(localStorage.getItem(userInput + "_store"));
+    storeArray = storeStorage;
+    renderStoreList();
+  }, 2000);
 }
 
 function renderStoreList() {
   console.log("function renderStoreList()");
+  //generate content cards
   for (let i = 0; i < 10; i++) {
     console.log("for loop" + i);
     console.log(storeArray[i]);
