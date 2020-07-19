@@ -32,32 +32,6 @@ function findOrganization() {
     console.log(resp);
     // Do something with resp.data.organizations
 
-<<<<<<< HEAD
-// function findOrganization (){
-// var pf = new petfinder.Client({
-//   apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
-//   secret: "tXoLVsBVrwoO8foqw23nd1AcDfLyI4EJNYVnrxE9",
-// });
-var userInput = "new york"; //after test should be exchanged for city name
-var lat;
-var lon;
-
-function findOrganization() {
-  var pf = new petfinder.Client({
-    apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
-    secret: "tXoLVsBVrwoO8foqw23nd1AcDfLyI4EJNYVnrxE9",
-  });
-
-  var city = userInput;
-  
-  pf.organization.search({ query: city }).then((resp) => {
-    console.log(resp);
-    // Do something with resp.data.organizations
-
-    var listLength = resp.data.organizations.length;
-    console.log(listLength);
-    for (var i = 0; i < listLength; i++) {
-=======
     var listLength = resp.data.organizations.length;
     console.log(listLength);
 
@@ -65,47 +39,10 @@ function findOrganization() {
       var newAdoptionOrgCard = $('<div class="card">');
 
       var address = [];
->>>>>>> master
       var street = resp.data.organizations[i].address.address1;
       var city = resp.data.organizations[i].address.city;
       var state = resp.data.organizations[i].address.state;
       var postcode = resp.data.organizations[i].address.postcode;
-<<<<<<< HEAD
-      var address = street + city + state + postcode;
-      //+resp.data.organizations[i].city+resp.data.organizations[i].state+resp.data.organizations[i].postcode
-      console.log(address);
-
-      var newAdoptionOrgCard = $('<div class="card">');
-
-      var name = $('<h2 class="title is-4 park-1>').text(
-        resp.data.organizations[i].name
-      );
-      $("<h3 class='park-address-1'>");
-
-  var listLength = resp.data.organizations.length;
-  console.log(listLength);
-  for (var i = 0; i < listLength; i++) {
-   var street = resp.data.organizations[i].address.address1
-   var city =resp.data.organizations[i].address.city
-   var state =resp.data.organizations[i].address.state 
-   var postcode =resp.data.organizations[i].address.postcode
-   var address = street+city+state+postcode
-  
-   console.log(address)
-
-     var newAdoptionOrgCard =$('<div class="card">');
-     var name = $('<h2 class="title is-4 park-1>').text(resp.data.organizations[i].name)
-     var phone=  $( '<h3 class="park-phone-1">').text(resp.data.organizations[i].phone) 
-     var email =  $('</h3><h3 class="park-link-1">').text(resp.data.organizations[i].email) 
-     var addressInfo = $("<h3 class='park-address-1'>").text(address)
-     console.log(addressInfo)
-      $(newAdoptionOrgCard).append(name)
-      $(newAdoptionOrgCard).append(phone)
-      $(newAdoptionOrgCard).append(email)
-      $(newAdoptionOrgCard).append(addressInfo)
-    $("#adoptionCards").append(newAdoptionOrgCard);
-    
-=======
       if (street !== null || street !== "") {
         address.push(street);
       }
@@ -121,7 +58,7 @@ function findOrganization() {
       console.log(address);
 
       // var name = ;
-     var name = $('<h2>').text(resp.data.organizations[i].name);
+      var name = $("<h2>").text(resp.data.organizations[i].name);
       $(newAdoptionOrgCard).append(name);
 
       var phone = $('<h3 class="park-phone-1">').text(
@@ -139,7 +76,6 @@ function findOrganization() {
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
       $(newAdoptionOrgCard).append(addressInfo);
 
-      
       //======================ADDING A DOG IMG
       // var queryURL =
       //   "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
@@ -156,12 +92,10 @@ function findOrganization() {
       //  var dogImg= $('<div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div>')
       //  $(newAdoptionOrgCard).append(dogImg)
 
-       $("#adoptionCards").append(newAdoptionOrgCard);
+      $("#adoptionCards").append(newAdoptionOrgCard);
 
-
-    // })
->>>>>>> master
-  }
+      // })
+    }
   });
 }
 
@@ -338,8 +272,3 @@ function findPetShop() {
 findLocationPark();
 findLocationShop();
 findOrganization();
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
