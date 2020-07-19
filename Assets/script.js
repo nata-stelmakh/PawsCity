@@ -70,7 +70,7 @@ function findOrganization() {
       var media = $("<div class='media'>")
          
       var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img id=dog>')
-      var imageUrl = imgList[0];
+      var imageUrl = imgList[i];
       console.log(imageUrl)
       $(`#dog`).attr("src", imageUrl);
       $("img").attr("alt", "dog image");
