@@ -2,13 +2,6 @@ a:link {
   /* color: white; */
   color: maroon;
 }
-/* a:visited {
-  color: white;
-} */
-/* 
-a:link {
-  color: white;
-} */
 
 .app-text {
   font-family: "Courier New", Courier, monospace;
@@ -35,12 +28,118 @@ a:link {
 }
 
 .logo {
-  min-width: 300px;
+  /* min-width: 300px; */
   padding-top: 150px;
 }
-/* 
-.responsive {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-} */
+
+@media screen and (max-width: 900px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 90%;
+  }
+
+  .input {
+    max-width: 650px !important;
+    width: 90% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 85%;
+  }
+
+  .input {
+    max-width: 650px !important;
+    width: 85% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 75%;
+  }
+
+  .input {
+    max-width: 650px !important;
+    width: 80% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 60%;
+  }
+
+  .input {
+    max-width: 650px !important;
+    width: 70% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 50%;
+  }
+
+  .input {
+    max-width: 350px !important;
+    width: 60% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 50%;
+  }
+
+  .input {
+    max-width: 300px !important;
+    width: 60% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .logosize {
+    margin: 0px auto 0px auto;
+    align-content: center;
+    width: 500px;
+    max-width: 50%;
+  }
+
+  .input {
+    max-width: 250px !important;
+    width: 60% !important;
+    margin: 0px auto 0 auto;
+    border-radius: 25px;
+  }
+}
