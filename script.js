@@ -2,24 +2,35 @@
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
-var userInput = "new york"; //after test should be exchanged for citname
+var userInput; //after test should be exchanged for citname
 var lat;
 var lon;
 // var address=[]
 
-$("input").on("click", function (event) {
-  event.preventDefault();
+//get city name from input and do all function
 
-  var cityname = $("input").val().trim();
-  return cityname;
+$("form").submit(function (event) {
+  event.preventDefault();
+  userInput = $("input").val().trim();
+  console.log(userInput);
+
+  findLocationPark();
+  findLocationShop();
+  findOrganization();
 });
-//=======================ADD KEY "ENTER" AS A TRIGGER
-$("input").on("keypress", function (event) {
-  if (event.which === 13 || event.keyCode === 13) {
-    var cityname = $("input").val().trim();
-    return cityname;
-  }
-});
+// $("input").on("click", function (event) {
+//   event.preventDefault();
+
+//   var cityname = $("input").val().trim();
+//   return cityname;
+// });
+// //=======================ADD KEY "ENTER" AS A TRIGGER
+// $("input").on("keypress", function (event) {
+//   if (event.which === 13 || event.keyCode === 13) {
+//     var cityname = $("input").val().trim();
+//     return cityname;
+//   }
+// });
 
 function findOrganization() {
   var pf = new petfinder.Client({
@@ -268,7 +279,3 @@ function findPetShop() {
     }
   });
 }
-
-findLocationPark();
-findLocationShop();
-findOrganization();
