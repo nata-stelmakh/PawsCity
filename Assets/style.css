@@ -1,13 +1,14 @@
 a:link {
-  color: white;
+  /* color: white; */
+  color: maroon;
 }
 /* a:visited {
   color: white;
 } */
-
+/* 
 a:link {
   color: white;
-}
+} */
 
 .app-text {
   font-family: "Courier New", Courier, monospace;
