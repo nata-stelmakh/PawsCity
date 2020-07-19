@@ -40,15 +40,6 @@ $("form").submit(function (event) {
   // findStore();
 });
 
-
-// //=======================ADD KEY "ENTER" AS A TRIGGER
-// $("input").on("keypress", function (event) {
-//   if (event.which === 13 || event.keyCode === 13) {
-//     var cityname = $("input").val().trim();
-//     return cityname;
-//   }
-// });
-
 //organization==========================================================
 function findOrganization() {
   var pf = new petfinder.Client({
@@ -57,7 +48,7 @@ function findOrganization() {
   });
   var city = userInput;
 
-  pf.organization.search({ location:city }).then((resp) => {
+  pf.organization.search({ query:city }).then((resp) => {
     console.log(resp);
     // Do something with resp.data.organizations
 
@@ -72,12 +63,10 @@ function findOrganization() {
       var newAdoptionCardContent =$('<div class="card-content">')
       var media = $("<div class='media'>")
       var mediaContent = $("<div class='media-content'>")
-      var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img class="dog">')
-
-
-     
-           
-
+      var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img class ="dog" src='+ 
+      imgList[Math.floor(Math.random() * imgList.length)]+'>')
+  
+          
       var address = [];
       var street = resp.data.organizations[i].address.address1;
       var city = resp.data.organizations[i].address.city;
@@ -116,20 +105,17 @@ function findOrganization() {
       $(mediaContent).append(addressInfo);
 
 
-      $(media).append(dogImg);
+      ;
+      $(".dog").attr("alt", "dog image");
+      $(media).append(dogImg) 
       $(media).append(mediaContent)
       $(newAdoptionCardContent).append(media)
       $(newAdoptionOrgCard).append(newAdoptionCardContent)
       $("#adoptionCards").append(newAdoptionOrgCard);
-
-      imageUrl = imgList[Math.floor(Math.random() * imgList.length)]
-      console.log(imageUrl)
-      $(".dog").attr("src",imageUrl) ;  
-      $(".dog").attr("alt", "dog image");  
+     
     }
-         
-   
-  });
+      
+    });
 }
 
 //park==========================================================
