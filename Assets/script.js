@@ -66,14 +66,16 @@ function findOrganization() {
 
     for (var i = 0; i < listLength; i++) {
       var newAdoptionOrgCard = $('<div class="card">')
-
+      var newAdoptionCardContent =$('<div class="card-content">')
+      var media = $("<div class='media'>")
+         
       var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img id=dog>')
-
       var imageUrl = imgList[0];
       console.log(imageUrl)
       $(`#dog`).attr("src", imageUrl);
       $("img").attr("alt", "dog image");
-      $(newAdoptionOrgCard).append(dogImg);
+
+      $(media).append(dogImg);
 
       var address = [];
       var street = resp.data.organizations[i].address.address1;
@@ -93,9 +95,10 @@ function findOrganization() {
         address.push(postcode);
       }
       console.log(address);
-       var text = $("<div class='media-content'>")
+      
+      var mediaContent = $("<div class='media-content'>")
       var name = $("<h2 class='title is-4 park-1'>").text(resp.data.organizations[i].name);
-      $(text).append(name); 
+      $(mediaContent).append(name); 
       
 
 
@@ -103,19 +106,19 @@ function findOrganization() {
         resp.data.organizations[i].phone
       );
       if (phone !== null || phone !== "") {
-        $(text).append(phone);
+      $(mediaContent).append(phone);
       }
       var email = $('</h3><h3 class="park-link-1">').text(
         resp.data.organizations[i].email
       );
       if (email !== null || email !== "") {
-        $(text).append(email);
+      $(mediaContent).append(email);
       }
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
-      $(text).append(addressInfo);
-
-      $(newAdoptionOrgCard).append(text)
-     
+      $(mediaContent).append(addressInfo);
+      $(media).append(mediaContent)
+      $(newAdoptionCardContent).append(media)
+      $(newAdoptionOrgCard).append(newAdoptionCardContent)
       $("#adoptionCards").append(newAdoptionOrgCard);
 
     }
