@@ -1,0 +1,45 @@
+a:link {
+  color: white;
+}
+/* a:visited {
+  color: white;
+} */
+
+a:link {
+  color: white;
+}
+
+.app-text {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
+}
+
+#inputbox-container {
+  /* margin: 0 auto 0 auto; */
+  min-width: 410px;
+  width: var(--content-width);
+}
+
+.input {
+  max-width: 650px !important;
+  width: 100% !important;
+  margin: 0px auto 0 auto;
+  border-radius: 25px;
+}
+
+.logosize {
+  margin: 0px auto 0px auto;
+  align-content: center;
+  max-width: 500px;
+}
+
+.logo {
+  min-width: 300px;
+  padding-top: 150px;
+}
+/* 
+.responsive {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+} */
