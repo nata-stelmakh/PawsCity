@@ -75,10 +75,7 @@ function findOrganization() {
       var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img class="dog">')
 
 
-      imageUrl = imgList[Math.floor(Math.random() * imgList.length)]
-      console.log(imageUrl)
-      $(".dog").attr("src",imageUrl) ;  
-      $(".dog").attr("alt", "dog image");  
+     
            
 
       var address = [];
@@ -125,11 +122,12 @@ function findOrganization() {
       $(newAdoptionOrgCard).append(newAdoptionCardContent)
       $("#adoptionCards").append(newAdoptionOrgCard);
 
+      imageUrl = imgList[Math.floor(Math.random() * imgList.length)]
+      console.log(imageUrl)
+      $(".dog").attr("src",imageUrl) ;  
+      $(".dog").attr("alt", "dog image");  
     }
-    
-      // var randomImageFromArray = imgList[Math.floor(Math.random() * imgList.length)];
-      
-    
+         
    
   });
 }
