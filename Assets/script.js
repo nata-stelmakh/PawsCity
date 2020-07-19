@@ -21,8 +21,10 @@ $(function () {
 //get city name from input and do all function (KC)
 $("form").submit(function (event) {
   //empty all elements before generate
+
   $("#parkCards").empty();
   $("#storeCards").empty();
+  $("#adoptionCards").empty();
 
   event.preventDefault();
   userInput = $("input").val().trim();
@@ -203,16 +205,31 @@ function renderParkList() {
   for (let i = 0; i < 10; i++) {
     console.log("for loop" + i);
     console.log(parkArray[i]);
+
+    var address = "";
+    if (parkArray[i].address) {
+      address = parkArray[i].address;
+    }
+
+    var phone = "";
+    if (parkArray[i].phone_number) {
+      phone = parkArray[i].phone_number;
+    }
+    var website = "";
+    if (parkArray[i].website) {
+      website = parkArray[i].website;
+    }
+
     // Dog park contents
     var newParkCard = $(
       `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
         parkArray[i].name +
         '</h2><h3 class="park-address-1">' +
-        parkArray[i].address +
+        address +
         '</h3><h3 class="park-phone-1">' +
-        parkArray[i].phone_number +
+        phone +
         '</h3><h3 class="park-link-1">' +
-        parkArray[i].website +
+        website +
         "</h3></div></div><br />"
     );
     $("#parkCards").append(newParkCard);
@@ -298,21 +315,34 @@ function renderStoreList() {
     console.log("for loop" + i);
     console.log(storeArray[i]);
     // Dog park contents
+    var address = "";
+    if (storeArray[i].address) {
+      address = storeArray[i].address;
+    }
+
+    var phone = "";
+    if (storeArray[i].phone_number) {
+      phone = storeArray[i].phone_number;
+    }
+    var website = "";
+    if (storeArray[i].website) {
+      website = storeArray[i].website;
+    }
     var newStoreCard = $(
-      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=strdog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
+      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
         storeArray[i].name +
         '</h2><h3 class="store-address-1">' +
-        storeArray[i].address +
+        address +
         '</h3><h3 class="store-phone-1">' +
-        storeArray[i].phone_number +
+        phone +
         '</h3><h3 class="store-link-1">' +
-        storeArray[i].website +
+        website +
         "</h3></div></div><br />"
     );
     $("#storeCards").append(newStoreCard);
     // Dog images
     var imageUrl = `images/image${i}.jpg`;
-    $(`#strdog` + i).attr("src", imageUrl);
+    $(`#dog` + i).attr("src", imageUrl);
     $("img").attr("alt", "dog image");
   }
 }
