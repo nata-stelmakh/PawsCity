@@ -31,8 +31,8 @@ a:link {
   align-content: center;
 }
 
-/* .responsive {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-} */
+.logosize {
+  margin: 0px auto 0px auto;
+  align-content: center;
+  max-width: 500px;
+}
