@@ -3,6 +3,7 @@
   <head>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adoption</title>
@@ -31,7 +32,6 @@
             height="28"
           />
         </a>
-
         <a
           role="button"
           class="navbar-burger burger"
@@ -67,12 +67,15 @@
       </div>
 
       <div class="navbar-end">
-        <input
-          class="input"
-          type="text"
-          placeholder="Search City..."
-          style="margin-top: 6px;"
-        />
+        <form action="" type="submit">
+          <input
+            class="input"
+            type="text"
+            placeholder="Search City..."
+            style="margin-top: 6px;"
+          />
+        </form>
+
         <span class="icon is-left">
           <i class="fas fa-search" aria-hidden="true"></i>
         </span>
