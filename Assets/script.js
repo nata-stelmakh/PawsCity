@@ -2,11 +2,14 @@
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
-var userInput; //after test should be exchanged for citname
+//after test should be exchanged for citname
+
+var userInput;
 var parkArray = [];
 var storeArray = [];
+var imgList = ["images/image0.jpg","images/image1.jpg","images/image2.jpg","images/image3.jpg","images/image4.jpg","images/image5.jpg","images/image6.jpg","images/image7.jpg","images/image8.jpg","images/image9.jpg","images/image10.jpg"];
 
-// var address=[]
+
 
 $(function () {
   //get city name and generate all cards when reloaded
@@ -37,12 +40,7 @@ $("form").submit(function (event) {
   // findStore();
 });
 
-// $("input").on("click", function (event) {
-//   event.preventDefault();
 
-//   var cityname = $("input").val().trim();
-//   return cityname;
-// });
 // //=======================ADD KEY "ENTER" AS A TRIGGER
 // $("input").on("keypress", function (event) {
 //   if (event.which === 13 || event.keyCode === 13) {
@@ -67,7 +65,17 @@ function findOrganization() {
     console.log(listLength);
 
     for (var i = 0; i < listLength; i++) {
-      var newAdoptionOrgCard = $('<div class="card">');
+      var newAdoptionOrgCard = $('<div class="card">')
+      var newAdoptionCardContent =$('<div class="card-content">')
+      var media = $("<div class='media'>")
+         
+      var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img id=dog>')
+      var imageUrl = imgList[i];
+      console.log(imageUrl)
+      $(`#dog`).attr("src", imageUrl);
+      $("img").attr("alt", "dog image");
+
+      $(media).append(dogImg);
 
       var address = [];
       var street = resp.data.organizations[i].address.address1;
@@ -87,45 +95,32 @@ function findOrganization() {
         address.push(postcode);
       }
       console.log(address);
+      
+      var mediaContent = $("<div class='media-content'>")
+      var name = $("<h2 class='title is-4 park-1'>").text(resp.data.organizations[i].name);
+      $(mediaContent).append(name); 
+      
 
-      // var name = ;
-      var name = $("<h2>").text(resp.data.organizations[i].name);
-      $(newAdoptionOrgCard).append(name);
 
       var phone = $('<h3 class="park-phone-1">').text(
         resp.data.organizations[i].phone
       );
       if (phone !== null || phone !== "") {
-        $(newAdoptionOrgCard).append(phone);
+      $(mediaContent).append(phone);
       }
       var email = $('</h3><h3 class="park-link-1">').text(
         resp.data.organizations[i].email
       );
       if (email !== null || email !== "") {
-        $(newAdoptionOrgCard).append(email);
+      $(mediaContent).append(email);
       }
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
-      $(newAdoptionOrgCard).append(addressInfo);
-
-      //======================ADDING A DOG IMG
-      // var queryURL =
-      //   "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
-      // $.ajax({
-      //   url: queryURL,
-      //   method: "GET",
-      // }).then(function (response) {
-      //   // console.log(“=====dog imgs=====“);
-      //   // console.log(response);
-      //   var imageUrl = response.data.fixed_width_small_url;
-      //   $(`#dog` + i).attr("src", imageUrl);
-      //   $("img").attr("alt", "dog image");
-
-      //  var dogImg= $('<div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div>')
-      //  $(newAdoptionOrgCard).append(dogImg)
-
+      $(mediaContent).append(addressInfo);
+      $(media).append(mediaContent)
+      $(newAdoptionCardContent).append(media)
+      $(newAdoptionOrgCard).append(newAdoptionCardContent)
       $("#adoptionCards").append(newAdoptionOrgCard);
 
-      // })
     }
   });
 }
