@@ -2,9 +2,12 @@
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
-var userInput; //after test should be exchanged for citname
+//after test should be exchanged for citname
+
+var userInput;
 var parkArray = [];
 var storeArray = [];
+var imgList = [{src:"images\image0.jpg",src:"images\image1.jpg",src:"images\image2.jpg",src:"images\image3.jpg",src:"images\image4.jpg",src:"images\image5.jpg",src:"images\image6.jpg",src:"images\image7.jpg",src:"images\image8.jpg",src:"images\image9.jpg",src:"images\image10.jpg"}];
 
 // var address=[]
 
@@ -37,12 +40,7 @@ $("form").submit(function (event) {
   // findStore();
 });
 
-// $("input").on("click", function (event) {
-//   event.preventDefault();
 
-//   var cityname = $("input").val().trim();
-//   return cityname;
-// });
 // //=======================ADD KEY "ENTER" AS A TRIGGER
 // $("input").on("keypress", function (event) {
 //   if (event.which === 13 || event.keyCode === 13) {
@@ -88,7 +86,6 @@ function findOrganization() {
       }
       console.log(address);
 
-      // var name = ;
       var name = $("<h2>").text(resp.data.organizations[i].name);
       $(newAdoptionOrgCard).append(name);
 
@@ -106,26 +103,8 @@ function findOrganization() {
       }
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
       $(newAdoptionOrgCard).append(addressInfo);
-
-      //======================ADDING A DOG IMG
-      // var queryURL =
-      //   "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
-      // $.ajax({
-      //   url: queryURL,
-      //   method: "GET",
-      // }).then(function (response) {
-      //   // console.log(“=====dog imgs=====“);
-      //   // console.log(response);
-      //   var imageUrl = response.data.fixed_width_small_url;
-      //   $(`#dog` + i).attr("src", imageUrl);
-      //   $("img").attr("alt", "dog image");
-
-      //  var dogImg= $('<div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div>')
-      //  $(newAdoptionOrgCard).append(dogImg)
-
       $("#adoptionCards").append(newAdoptionOrgCard);
 
-      // })
     }
   });
 }
