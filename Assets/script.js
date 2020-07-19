@@ -7,7 +7,7 @@ var lat;
 var lon;
 // var address=[]
 
-//get city name from input and do all function (kaori)
+//get city name from input and do all function (KC)
 $("form").submit(function (event) {
   event.preventDefault();
   userInput = $("input").val().trim();
