@@ -5,8 +5,7 @@
 var userInput; //after test should be exchanged for citname
 var parkArray = [];
 var storeArray = [];
-// var lat;
-// var lon;
+
 // var address=[]
 
 $(function () {
@@ -50,6 +49,7 @@ $("form").submit(function (event) {
 //   }
 // });
 
+//organization==========================================================
 function findOrganization() {
   var pf = new petfinder.Client({
     apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
@@ -148,7 +148,7 @@ function findPark() {
 function ajaxPark() {
   console.log("ajaxPark");
   console.log(userInput);
-  //setup API for getting earched geolocation
+  //setup API for getting searched geolocation
   var settings = {
     url:
       "https://api.opencagedata.com/geocode/v1/json?q=" +
@@ -161,7 +161,7 @@ function ajaxPark() {
     var lon = response.results[0].geometry.lng;
     console.log("lat: " + lat);
     console.log("lon: " + lon);
-    //setup API for searhing parks
+    //setup API for searching parks
     var inputPlace = "park"; //pet store, park
     var settings = {
       async: true,
@@ -299,7 +299,7 @@ function renderStoreList() {
     console.log(storeArray[i]);
     // Dog park contents
     var newStoreCard = $(
-      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
+      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=strdog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
         storeArray[i].name +
         '</h2><h3 class="store-address-1">' +
         storeArray[i].address +
@@ -312,7 +312,7 @@ function renderStoreList() {
     $("#storeCards").append(newStoreCard);
     // Dog images
     var imageUrl = `images/image${i}.jpg`;
-    $(`#dog` + i).attr("src", imageUrl);
+    $(`#strdog` + i).attr("src", imageUrl);
     $("img").attr("alt", "dog image");
   }
 }
