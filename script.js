@@ -2,33 +2,29 @@
 //create a key to a pet finder
 //create a key to a truewayplaces
 //make an ajax request with petfinder to bring out locations of organizations
-var userInput = "new york"; //after test should be exchanged for citname
-var lat;
-var lon;
+
 // var address=[]
 
-$("input").on("click", function (event) {
-  event.preventDefault();
+// $("input").on("click", function (event) {
+//   event.preventDefault();
 
-  var cityname = $("input").val().trim();
-  return cityname;
-});
+//   var cityname = $("input").val().trim();
+//   console.log(cityname)
+//   return cityname;
+// });
 //=======================ADD KEY "ENTER" AS A TRIGGER
-$("input").on("keypress", function (event) {
-  if (event.which === 13 || event.keyCode === 13) {
-    var cityname = $("input").val().trim();
-    return cityname;
-  }
-});
+var cityname
+var lat;
+var lon;
 
 function findOrganization() {
   var pf = new petfinder.Client({
     apiKey: "vYNkq3wbvswUKkr81aYrKbMyaGgd2JHx8S47lGH37GfkUoqgtm",
     secret: "tXoLVsBVrwoO8foqw23nd1AcDfLyI4EJNYVnrxE9",
   });
-  var city = userInput;
+  // var cityname = userInput;
 
-  pf.organization.search({ query: city }).then((resp) => {
+  pf.organization.search({ query: cityname }).then((resp) => {
     console.log(resp);
     // Do something with resp.data.organizations
 
@@ -75,6 +71,7 @@ function findOrganization() {
       }
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
       $(newAdoptionOrgCard).append(addressInfo);
+      $("#adoptionCards").append(newAdoptionOrgCard);
 
       
       //======================ADDING A DOG IMG
@@ -93,8 +90,7 @@ function findOrganization() {
       //  var dogImg= $('<div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div>')
       //  $(newAdoptionOrgCard).append(dogImg)
 
-       $("#adoptionCards").append(newAdoptionOrgCard);
-
+      
 
     // })
   }
@@ -105,7 +101,7 @@ function findLocationPark() {
   var settings = {
     url:
       "https://api.opencagedata.com/geocode/v1/json?q=" +
-      userInput +
+      cityname +
       "&key=3b446aa27f154ce1ba029aa576b449b1",
     method: "GET",
   };
@@ -123,7 +119,7 @@ function findLocationShop() {
   var settings = {
     url:
       "https://api.opencagedata.com/geocode/v1/json?q=" +
-      userInput +
+      cityname +
       "&key=3b446aa27f154ce1ba029aa576b449b1",
     method: "GET",
   };
@@ -214,7 +210,7 @@ function findPetShop() {
     var shopArray = response.results;
     for (let i = 0; i < 20; i++) {
       // =======(Dog park contents)=====================================================
-      var newParkCard = $(
+      var newShopCard = $(
         `<div class=“card”> <div class=“card-content”><div class=“media”><div class=“media-left”><figure class=“image is-96x96”><img id=dog${i}></figure></div><div class=“media-content”><h2 class=“title is-4 store-1”>` +
           shopArray[i].name +
           "</h2><h3 class='store-address-1'>" +
@@ -225,7 +221,7 @@ function findPetShop() {
           shopArray[i].website +
           "</h3></div></div><br />"
       );
-      $("#storeContainer").append(newParkCard);
+      
       // =====(dog img)=======================================================
       var queryURL =
         "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
@@ -251,7 +247,7 @@ function findPetShop() {
             "</h3></div></div><br />"
         );
 
-        $("#storeContainer").append(newParkCard);
+        $("#storeContainer").append(newShopCard);
         // =====(dog img)=======================================================
         var queryURL =
           "https://api.giphy.com/v1/gifs/random?api_key=U6VCGpL2YUv20Ogbx5MUqBXnuarsa34Q&tag=dogs";
@@ -271,7 +267,19 @@ function findPetShop() {
     }
   });
 }
+$("input").on("keypress", function (event) {
+  if (event.which === 13 || event.keyCode === 13) {
+    var cityname = $("input").val().trim();
+    console.log(cityname)
 
-findLocationPark();
-findLocationShop();
-findOrganization();
+    // return cityname;
+    $("#adoptionCards").empty()
+    $("#storeContainer").empty()
+    $("#parkContainer").empty()
+    findOrganization();
+    findLocationPark();
+    findLocationShop();
+    
+  }
+});
+
