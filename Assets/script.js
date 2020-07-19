@@ -244,9 +244,11 @@ function renderParkList() {
         address +
         '</h3><h3 class="park-phone-1">' +
         phone +
-        '</h3><h3 class="park-link-1">' +
+        '</h3><h3 class="store-link-1"><a href=' +
         website +
-        "</h3></div></div><br />"
+        ">" +
+        website +
+        "</a></h3></div></div><br />"
     );
     $("#parkCards").append(newParkCard);
     // Dog images
@@ -367,9 +369,11 @@ function renderStoreList() {
         address +
         '</h3><h3 class="store-phone-1">' +
         phone +
-        '</h3><h3 class="store-link-1">' +
+        '</h3><h3 class="store-link-1"><a href=' +
         website +
-        "</h3></div></div><br />"
+        ">" +
+        website +
+        "</a></h3></div></div><br />"
     );
     $("#storeCards").append(newStoreCard);
     // Dog images
