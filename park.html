@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PawsCity</title>
+    <title>Paws City/Pet Parks</title>
     <!-- bulma link -->
     <link
       rel="stylesheet"
@@ -22,26 +22,52 @@
     <link rel="stylesheet" href="Assets/style.css" />
   </head>
   <body>
-    <!-- Nav Bar -->
-    <nav class="navbar is-link" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand navbar-start">
-        <a href="index.html" class="app-text navbar-item"
-          ><img src="images/PawsCity_logo3.png" alt="logo3"
-        /></a>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img
+            src="images/PawsCity_logo3.png"
+            alt="logo3"
+            style="width: 100px; height: 28px;"
+          />
+        </a>
+
         <a
           role="button"
           class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
+          onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="adoption.html">
+            Adoption Centers 🐾
+          </a>
+
+          <a class="navbar-item" href="dog-friendly.html">
+            Pet-Friendly Places 🐾
+          </a>
+
+          <a class="navbar-item" href="park.html">
+            Parks 🐾
+          </a>
+
+          <a class="navbar-item" href="PetStores.html">
+            Pet Stores 🐾
+          </a>
+        </div>
+      </div>
+
       <div class="navbar-end">
-        <form action="" type="submit">
+        <form>
           <input
             class="input"
             type="text"
@@ -54,27 +80,8 @@
           <i class="fas fa-search" aria-hidden="true"></i>
         </span>
       </div>
+      <br />
     </nav>
-    <br />
-    <!-- buttons -->
-    <div class="navbar-center">
-      <button class="button is-primary is-rounded is-info is-light">
-        <a href="adoption.html">Adoption Centers 🐾</a>
-      </button>
-      <button
-        href="dog-friendly.html"
-        class="button is-primary is-rounded is-info is-light"
-      >
-        <a href="dog-friendly.html">Pet-Friendly Places 🐾</a>
-      </button>
-      <button class="button is link is-primary is-rounded is-info is-info">
-        <a href="park.html">Dog Parks 🐾</a>
-      </button>
-      <button class="button is-primary is-rounded is-info is-light">
-        <a href="PetStores.html">Pet Stores 🐾</a>
-      </button>
-    </div>
-    <br />
     <div class="parkContainer" id="parkCards"></div>
     <script src="Assets/script.js"></script>
   </body>
