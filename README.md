@@ -36,3 +36,10 @@ When I click on “Pet-friendly Places” button,
 Then I am presented with a list of dog-friendly places.
 When I click on “Pet Stores” button,
 Then I am presented with a list of pet stores in my area.
+
+## PREVIEW
+
+![Screen Shot 2020-07-20 at 11 03 53 AM](https://user-images.githubusercontent.com/66850293/87953429-07dd0400-ca79-11ea-9423-384bda8a7f31.png)
+![Screen Shot 2020-07-20 at 11 04 53 AM](https://user-images.githubusercontent.com/66850293/87953461-10cdd580-ca79-11ea-94c3-2f71bb874075.png)
+![Screen Shot 2020-07-20 at 11 04 21 AM](https://user-images.githubusercontent.com/66850293/87953446-0ca1b800-ca79-11ea-8e1c-10fd82116111.png)
+![Screen Shot 2020-07-20 at 11 04 41 AM](https://user-images.githubusercontent.com/66850293/87953451-0f041200-ca79-11ea-86bd-9db5514d1cc8.png)
