@@ -27,7 +27,7 @@ $(function () {
   if (userInput !== null) {
     findOrganization();
     findPark();
-    findStore();
+    // findStore();
   }
 });
 
@@ -58,8 +58,9 @@ function findOrganization() {
   });
   var city = userInput;
 
-  pf.organization.search({ query: city }).then((resp) => {
+  pf.organization.search({ location: city }).then((resp) => {
     console.log(resp);
+    console.log("org input city: " + city);
     // Do something with resp.data.organizations
 
     var listLength = resp.data.organizations.length;
