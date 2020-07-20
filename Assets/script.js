@@ -6,6 +6,7 @@
 
 var userInput;
 var parkArray = [];
+<<<<<<< HEAD
 var storeArray = [];
 var imgList = [
   "images/image0.jpg",
@@ -20,6 +21,12 @@ var imgList = [
   "images/image9.jpg",
   "images/image10.jpg",
 ];
+=======
+var storeArray = []; 
+var imgList = ["images/image0.jpg","images/image1.jpg","images/image2.jpg","images/image3.jpg","images/image4.jpg","images/image5.jpg","images/image6.jpg","images/image7.jpg","images/image8.jpg","images/image9.jpg","images/image10.jpg"];
+
+
+>>>>>>> 757e14f2b6bd35358b6f1ef23ea3cac0ea301ccb
 
 $(function () {
   //get city name and generate all cards when reloaded
@@ -50,6 +57,7 @@ $("form").submit(function (event) {
   findStore();
 });
 
+<<<<<<< HEAD
 // //=======================ADD KEY "ENTER" AS A TRIGGER
 // $("input").on("keypress", function (event) {
 //   if (event.which === 13 || event.keyCode === 13) {
@@ -58,6 +66,8 @@ $("form").submit(function (event) {
 //   }
 // });
 
+=======
+>>>>>>> 757e14f2b6bd35358b6f1ef23ea3cac0ea301ccb
 //organization==========================================================
 function findOrganization() {
   var pf = new petfinder.Client({
@@ -66,14 +76,17 @@ function findOrganization() {
   });
   var city = userInput;
 
-  pf.organization.search({ query: city }).then((resp) => {
+  pf.organization.search({ query:city }).then((resp) => {
     console.log(resp);
     // Do something with resp.data.organizations
 
     var listLength = resp.data.organizations.length;
     console.log(listLength);
 
+    
+
     for (var i = 0; i < listLength; i++) {
+<<<<<<< HEAD
       var newAdoptionOrgCard = $('<div class="card">');
       var newAdoptionCardContent = $('<div class="card-content">');
       var media = $("<div class='media'>");
@@ -88,6 +101,17 @@ function findOrganization() {
 
       $(media).append(dogImg);
 
+=======
+      
+      var newAdoptionOrgCard = $('<div class="card">')
+      var newAdoptionCardContent =$('<div class="card-content">')
+      var media = $("<div class='media'>")
+      var mediaContent = $("<div class='media-content'>")
+      var dogImg = $('<div class="media-left"><figure class="image is-96x96"><img class ="dog" src='+ 
+      imgList[Math.floor(Math.random() * imgList.length)]+'>')
+  
+          
+>>>>>>> 757e14f2b6bd35358b6f1ef23ea3cac0ea301ccb
       var address = [];
       var street = resp.data.organizations[i].address.address1;
       var city = resp.data.organizations[i].address.city;
@@ -106,6 +130,7 @@ function findOrganization() {
         address.push(postcode);
       }
       console.log(address);
+<<<<<<< HEAD
 
       var mediaContent = $("<div class='media-content'>");
       var name = $("<h2 class='title is-4 park-1'>").text(
@@ -113,6 +138,12 @@ function findOrganization() {
       );
       $(mediaContent).append(name);
 
+=======
+      
+      
+      var name = $("<h2 class='title is-4 park-1'>").text(resp.data.organizations[i].name);
+      $(mediaContent).append(name); 
+>>>>>>> 757e14f2b6bd35358b6f1ef23ea3cac0ea301ccb
       var phone = $('<h3 class="park-phone-1">').text(
         resp.data.organizations[i].phone
       );
@@ -127,12 +158,26 @@ function findOrganization() {
       }
       var addressInfo = $("<h3 class='park-address-1'>").text(address);
       $(mediaContent).append(addressInfo);
+<<<<<<< HEAD
       $(media).append(mediaContent);
       $(newAdoptionCardContent).append(media);
       $(newAdoptionOrgCard).append(newAdoptionCardContent);
       $("#adoptionCards").append(newAdoptionOrgCard);
+=======
+
+
+      ;
+      $(".dog").attr("alt", "dog image");
+      $(media).append(dogImg) 
+      $(media).append(mediaContent)
+      $(newAdoptionCardContent).append(media)
+      $(newAdoptionOrgCard).append(newAdoptionCardContent)
+      $("#adoptionCards").append(newAdoptionOrgCard);
+     
+>>>>>>> 757e14f2b6bd35358b6f1ef23ea3cac0ea301ccb
     }
-  });
+      
+    });
 }
 
 //park==========================================================
