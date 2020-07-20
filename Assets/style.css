@@ -19,6 +19,7 @@ a:link {
   width: 100% !important;
   margin: 0px auto 0 auto;
   border-radius: 25px;
+  font-size: 15px;
 }
 
 .logosize {
@@ -64,7 +65,7 @@ a:link {
 
   .input {
     max-width: 650px !important;
-    width: 85% !important;
+    width: 100% !important;
     margin: 0px auto 0 auto;
     border-radius: 25px;
   }
@@ -80,7 +81,7 @@ a:link {
 
   .input {
     max-width: 650px !important;
-    width: 80% !important;
+    width: 100% !important;
     margin: 0px auto 0 auto;
     border-radius: 25px;
   }
@@ -96,7 +97,7 @@ a:link {
 
   .input {
     max-width: 650px !important;
-    width: 70% !important;
+    width: 100% !important;
     margin: 0px auto 0 auto;
     border-radius: 25px;
   }
@@ -112,7 +113,7 @@ a:link {
 
   .input {
     max-width: 350px !important;
-    width: 60% !important;
+    width: 100% !important;
     margin: 0px auto 0 auto;
     border-radius: 25px;
   }
@@ -127,14 +128,14 @@ a:link {
   }
 
   .input {
-    max-width: 300px !important;
-    width: 60% !important;
+    max-width: 350px !important;
+    width: 100% !important;
     margin: 0px auto 0 auto;
     border-radius: 25px;
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 300px) {
   .logosize {
     margin: 0px auto 0px auto;
     align-content: center;
@@ -143,8 +144,8 @@ a:link {
   }
 
   .input {
-    max-width: 250px !important;
-    width: 60% !important;
+    max-width: 300px !important;
+    width: 100% !important;
     margin: 0px auto 0 auto;
     border-radius: 25px;
   }
