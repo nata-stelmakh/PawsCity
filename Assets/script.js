@@ -59,7 +59,7 @@ function findOrganization() {
   var city = userInput;
 
   pf.organization.search({ query: city }).then((resp) => {
-    console.log(resp);
+    // console.log(resp);
     console.log("org input city: " + city);
     // Do something with resp.data.organizations
 
@@ -94,7 +94,7 @@ function findOrganization() {
       if (postcode !== null || postcode !== "") {
         address.push(postcode);
       }
-      console.log(address);
+      // console.log(address);
 
       var name = $("<h2 class='title is-4 park-1'>").text(
         resp.data.organizations[i].name
@@ -128,12 +128,12 @@ function findOrganization() {
 //park==========================================================
 function findPark() {
   //get search results array
-  var parkStorage = JSON.parse(localStorage.getItem(userInput + "_park"));
+  parkArray = JSON.parse(localStorage.getItem(userInput + "_park"));
   console.log("function findPark()");
   //if there's a data in local storage, gengerate park list
-  if (parkStorage !== null) {
+  if (parkArray !== null) {
     console.log("if");
-    parkArray = parkStorage;
+    // parkArray = parkStorage;
     renderParkList();
   } else {
     // if there's no data in a local storage, go to API
@@ -144,7 +144,7 @@ function findPark() {
 
 function ajaxPark() {
   console.log("ajaxPark");
-  console.log(userInput);
+  // console.log(userInput);
   //setup API for getting searched geolocation
   var settings = {
     url:
@@ -173,7 +173,7 @@ function ajaxPark() {
       method: "GET",
       headers: {
         "x-rapidapi-host": "trueway-places.p.rapidapi.com",
-        "x-rapidapi-key": "cfef53d7cdmsh72ff2dcd84c03fap109e6djsn9398e97c0e46",
+        "x-rapidapi-key": "33220dbdedmsh5499ccf0fb9b28fp11bb85jsn968ac695016c",
       },
     };
     $.ajax(settings).done(function (response) {
@@ -182,24 +182,24 @@ function ajaxPark() {
         userInput + "_park",
         JSON.stringify(response.results)
       );
-      console.log("JSON 完了");
+      console.log("ParkのJSON 完了");
+      var parkStorage = JSON.parse(localStorage.getItem(userInput + "_park"));
+      parkArray = parkStorage;
+      // console.log("parkArrayの中味" + parkArray);
+      renderParkList();
     });
   });
   //timer for wating API response time
-  setTimeout(function () {
-    var parkStorage = JSON.parse(localStorage.getItem(userInput + "_park"));
-    parkArray = parkStorage;
-    console.log("parkArrayの中味" + parkArray);
-    renderParkList();
-  }, 2000);
+  // setTimeout(function () {}, 2000);
 }
 
 function renderParkList() {
   console.log("function renderParkList()");
   //generate content cards
-  for (let i = 0; i < 10; i++) {
-    console.log("for loop" + i);
-    console.log(parkArray[i]);
+  var j = 0; //counter for dog img
+  for (let i = 0; i < parkArray.length; i++) {
+    // console.log("for loop" + i);
+    // console.log(parkArray[i]);
 
     var address = "";
     if (parkArray[i].address) {
@@ -246,22 +246,30 @@ function renderParkList() {
         "</a></h3></div></div><br />"
     );
     $("#parkCards").append(newParkCard);
+
     // Dog images
-    var imageUrl = `images/image${i}.jpg`;
-    $(`#dog` + i).attr("src", imageUrl);
-    $("img").attr("alt", "dog image");
+    if (i === 10) {
+      var imageUrl = `images/image${j}.jpg`;
+      $(`#dog` + i).attr("src", imageUrl);
+      $("img").attr("alt", "dog image");
+      j = 0;
+    } else {
+      var imageUrl = `images/image${j}.jpg`;
+      $(`#dog` + i).attr("src", imageUrl);
+      $("img").attr("alt", "dog image");
+      j++;
+    }
   }
 }
 
 //pet store==========================================================
 function findStore() {
   //get search results array
-  var storeStorage = JSON.parse(localStorage.getItem(userInput + "_store"));
+  storeArray = JSON.parse(localStorage.getItem(userInput + "_store"));
   console.log("function findStore()");
   //if there's a data in local storage, gengerate park list
-  if (storeStorage !== null) {
+  if (storeArray !== null) {
     console.log("if");
-    storeArray = storeStorage;
     renderStoreList();
   } else {
     // if there's no data in a local storage, go to API
@@ -271,8 +279,8 @@ function findStore() {
 }
 
 function ajaxStore() {
-  console.log("ajaxStore");
-  console.log(userInput);
+  console.log("function - ajaxStore");
+  // console.log(userInput);
   //setup API for getting earched geolocation
   var settings = {
     url:
@@ -305,28 +313,28 @@ function ajaxStore() {
       },
     };
     $.ajax(settings).done(function (response) {
-      // console.log("=====Park=====");
-      // console.log(response);
+      console.log("StoreのJSON 完了");
       localStorage.setItem(
         userInput + "_store",
         JSON.stringify(response.results)
       );
+      storeArray = JSON.parse(localStorage.getItem(userInput + "_store"));
+
+      console.log("レンダーストアの直前");
+      renderStoreList();
     });
   });
   //timer for wating API response time
-  setTimeout(function () {
-    var storeStorage = JSON.parse(localStorage.getItem(userInput + "_store"));
-    storeArray = storeStorage;
-    renderStoreList();
-  }, 2000);
+  // setTimeout(function () {}, 2000);
 }
 
 function renderStoreList() {
   console.log("function renderStoreList()");
   //generate content cards
-  for (let i = 0; i < 10; i++) {
-    console.log("for loop" + i);
-    console.log(storeArray[i]);
+  var j = 0; //counter for stdog img
+  for (let i = 0; i < storeArray.length; i++) {
+    // console.log("for loop" + i);
+    // console.log(storeArray[i]);
     // Dog park contents
     var address = "";
     if (storeArray[i].address) {
@@ -358,7 +366,7 @@ function renderStoreList() {
       website = storeArray[i].website;
     }
     var newStoreCard = $(
-      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=dog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
+      `<div class="card"> <div class="card-content"><div class="media"><div class="media-left"><figure class="image is-96x96"><img id=stdog${i}></figure></div><div class="media-content"><h2 class="title is-4 park-1">` +
         storeArray[i].name +
         '</h2><h3 class="store-address-1">' +
         address +
@@ -371,9 +379,18 @@ function renderStoreList() {
         "</a></h3></div></div><br />"
     );
     $("#storeCards").append(newStoreCard);
+
     // Dog images
-    var imageUrl = `images/image${i}.jpg`;
-    $(`#dog` + i).attr("src", imageUrl);
-    $("img").attr("alt", "dog image");
+    if (i === 10) {
+      var imageUrl = `images/image${j}.jpg`;
+      $(`#stdog` + i).attr("src", imageUrl);
+      $("img").attr("alt", "dog image");
+      j = 0;
+    } else {
+      var imageUrl = `images/image${j}.jpg`;
+      $(`#stdog` + i).attr("src", imageUrl);
+      $("img").attr("alt", "dog image");
+      j++;
+    }
   }
 }
